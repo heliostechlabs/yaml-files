@@ -1,0 +1,246 @@
+---
+swagger: "2.0"
+info:
+  x-ibm-name: "crm-dista-fetch-lead-details"
+  title: "CRM Dista Fetch Lead Details"
+  version: "1.0.0"
+  description: "This API will be used to fetch details of a lead created in CRM system\
+    \ for Dista application.\nhttps://sakshamuat.axisbank.co.in/gateway/api/v1/crm/dista/lead/fetch-lead-details\n\
+    \n\n <b>Encryption</b> : \n    Encryption Mechanism : JWE\n    Key Encryption\
+    \ Algorithm : RSA-OAEP-256\n    Content Encryption Method    : A256GCM\n    Signing\
+    \ Algorithm    : RS256\n    \n<b>Plain request</b>\n<pre>{\n    \"Data\": {\n     \
+    \   \"leadId\": 300087417,\n        \"token\": \"qjg8clqv8mjs5njd6l2s676fk3kr83ralv4dkgm9t76wvdgnxc4m4y3mukpjhwtgvjvbh3sjlj5uu96lpyg8yg85dndt5zg5a37rs3ylvq6n43neyldfgsh2epjftjbpcyaf85nmcr2cxq9y6hruhrw7pkx24kr5uewl8p5kcak5lu45cgrwg8bu5m25gt6pzrcgxc4k3a3cdl4kj2r7egk7ga5zjnnzwxrqjfvgmzl57c3u3huw54zmydr7sy6wzbhtpk8tkg47s6byunlankz49le9pbj24zvlnc8pwe8gfy9q78vxyx9mgxs29hnubavsk2jjw6va4f2uw9urwbmfkue3634zq5agpj5ck6eja7svy36hhzx6z69g8uckmlrwqk85g8avj8sc5s7fy5b4tn7fvrw5lbhh56d8bswremuegfvsdmsxgl4fwbcnjbnalqvvxn4ptzrba43kvh3553uc9ax5dqk6cckqybp66myup6m39kyy2r5syf8qx5ek49e3r3jz28sm8xr4jcb7awsl6b93bkqx869r34hces8br798c8yys45cp9zen69hzpvakscek9chrblxdzzwsn3cmslxwjbuzwz\"\
+    \n    },\n    \"Risk\": {},\n    \"Links\": {},\n    \"Meta\": {}\n}\n\n<b>Encrypted\
+    \ Request</b>\n\neyJhbGciOiJSUzI1NiJ9.ZXlKbGJtTWlPaUpCTWpVMlIwTk5JaXdpWVd4bklqb2lVbE5CTFU5QlJWQXRNalUySW4wLjg3aGxFN1NFUFVlcEY5ajljV0NMYmxaREpaYm91V3BWUnBwNlQ5T1VFMkIzajRqam9Kc0MweDdfdXM3aWVfMjNnZ20zZExqZFhTTV9aLWtHN2NfMTJRWWJnZGp5dF9XWkYweWZLbEl6TWV6a0luWV9MMnk5WmtxbHFwbkstM0V4TlZGcVdMVnNINXY0TjJvOXFQNmpkd2pmcUwyWk9wMGdtdGkyV1dUSFpVWGhmWHhQZF9BQ29QN3NhU2Vta3Q5b2s4UnpFNXlmY2pKdnRfZWxzZjZuSTZ6UzRnM2phX01yY19Eb2d3cV9oN0lNYjFSTVZPa3E1Tmh3RkQ2Qkk2ZWVTcXR0OE1rUmlSWVRWYlozelYwcjJMb045eFA1VWRobFVUVlJaOGtveERlS1hVYTB2aDBnQWJnRXgtUEVBSUdOMkVua3gzcVl2ZWQydjFpRDJKWlZQQS5FT2lIeHpvNkFpVS10VmFULjdDYmpwcHlzUzJvQXhjRDdYRi1RZzBiZ2hVckVFcHlLdzFoVTN5c3NlNGNMakdBVDBXR1pUX2owTXF3U2RzRElnNDB0NHlFcVZSSERQMXNNYnQ5LVFfMTY3ZVRsQ1VCcGdMTGpfVmRiR0lrQ1J3T2lxdC1hYXBUTlhwWlNWMGVmaWxYc1h2cWdSc2RWeEtPeU9YVmZKbnJaaTU2ZHp0dmx2RVBMMUZ3Y0x0emgtSWRkRjE4M2l3Y2V5NUZzSWRIVGxiV2N6aHpnU0cyajdIa1R1VFN3YlVNMGM2UWJOOS13MDZZTkNtWlI2eVY3TURNWkdTMm9adk45bUg1cjZaOFd6dUwySUN6TnY1R2pOMWhmdEltZ3dWZ3c3c3RPcnhDei1lZGhoTmJwSUs3TlZJUFZRblNQRzBHNXcwcXZaQWZiZWNpQVJlemdqR1o0UF9FMHVfZllHR01lcDNzN29JZzNmLVFYSUwzYWpiODRiVkh5eXduUTVkTlM1ZXFhYXRoekNpbFdiN0lnZW1KOXMxSDdWM3Zyc2piX0FENnZfeDdzYWREU1lBc0VBVkJ0WXA2UGZKVk4wVlNiYnZNNGFQZHJUSjdLTDhKQkJJV0lvT2V3bmlmenFrNzk2djk1XzBMYU5RM2I1TUxqUTVUNGxxU3c5UE85RmZrYzdOUzg1ZFZIRDgyWHAtMWIwOXhreG5tZlNjal9FaGw5b3R0WFZ5aGpjeVVoRzZiZkV4LXNZb29ZZmpnQ2Rzak45WmZZTlo2N1haQ3prdkdPeEFFRGw4TXpDYTB5cVlOSHQyQ05ZVHFKVVQzbnVsaU9KUFRBTTBCVkYzNlJUaGpfeWlmd1pDXzZxQTJoUmxBSi1xOGNRa1l6eWw1SXd6d0I3d0gzaGFNUE92bFlGd2hzRnd3aEkzMm9kbmltbWd6R0ZMMXdNUHl2Xzg4RFdaZC0wcFJ1TnpEckgxbVZpc2htcDZMWmVydjRCUGVCS29aS1IwbG9US2JuREhTa0dPVUM1ZEZIVXV5Uk5pZHkxSWZwUDc3ZUpzQ1NBeDg1ZXRSVk0zX3I3aGRvTS1tQTNQT0dIdHJRSmRSbnZuNUxRdVhQZHloZnRNTkx0RnFGeUNDZjI5X2pOaEFUMV9lVmhqZ0I0ajlFWHgyNHh4Nkl5OFloUE14Uk9iV2hjRnFxVEFsUm16eXZZUEowWW5fWUNxdHBDQ2QwUEk1YU9PdmJjd3BTeGhBN1hNeGJkbGpmaXIyTmdiN1c1Y095QXVsOTlUSUZOOGMzX2pLZ25BSjloWmpvUEZFXzBTWk5XYWlrR0lJeS5XOVd3aF9WWG40U09mNWE3N2Zndjdn.DePUl9geFZqSLj-0FvzbiEPKe4I-SabOIUxL9pLpiYKTZoOnHc-mgimh2PxSKCeSgD8_XcfFMKQMTxrjG3YUI2OXp2QIEML2uEuldrKB7DjFyQEP_BVkoG5bhm9vTzTJoDMcc_xlgEQqddraqCyS0x1Vo6wzRCTDkEVmvJvOkNPUqLsrdT1Y57QDaIWFspeeUCrxRtvoD8cn1eFb-TKsZh2upm1HdoU_Lw6IDGylaZf8T1vS6bu6SaY6vZ7KeMbDM3kkDYcpzd9VRZzJuahvAp_4afuEkDn24Qn2G04vMlY915qATTtwqlThgYe2q6lEgb7Xr7bdq7VCUHecPK2GIw\n\
+    \n<b>Plain Response</b>\n<pre>{\n    \"Data\": {\n        \"isSuccess\": \"true\",\n   \
+    \     \"territoryName\": \"Central Office\",\n        \"assignToCode\": \"\",\n\
+    \        \"AssignToName\": \"\",\n        \"customerName\": \"INDRAJIT JAGDISHPRASAD\
+    \ SHARMA\",\n        \"leadOwnerName\": \"ALWebUser\",\n        \"leadRating\"\
+    : \"Hot\",\n        \"leadSourceName\": \"Mobile Banking\",\n        \"ownerCode\"\
+    : \"alwebuser\",\n        \"productCategoryName\": \"Aditya Birla Health Insurance\"\
+    ,\n        \"productName\": \"Group Activ Health Plan\",\n        \"statusCodeName\"\
+    : \"In Process\",\n        \"leadId\": \"300087417\",\n        \"leadName\": \"\
+    \  RNADJTI JIISGSDARHAPSDH AMARA\",\n        \"customerType\": \"2\",\n      \
+    \  \"customerId\": \"003149947\",\n        \"createdBySource\": \"30\",\n    \
+    \    \"mobilePhone\": \"919898466486\"\n    },\n    \"Risk\": {},\n    \"Links\"\
+    : {},\n    \"Meta\": {}\n}\n\n<b>\nEncrypted Response\n</b>\neyJhbGciOiJSUzI1NiJ9.ZXlKbGJtTWlPaUpCTWpVMlIwTk5JaXdpWVd4bklqb2lVbE5CTFU5QlJWQXRNalUySW4wLmRaRWxpTGhJMU45NVE2QThfYXdXZlZWNEY1ci1mRGZxSFQ0STBJUlNqQ0RfX3RmUkdYelhpZmZFOXptVUJyajJNQWI0N3JvUDRJVVJfWnExbVlPNUV6Yl9RcW1OOHZuZTRFczRHcFo3dDU4V0NvaWh3Z3gwd2dwTDQxYnlZX1VydGJDUERJb1lJemd4dk5nQWIwcGE4S1lYSW9sUkU2Q2hub0VkdVkza3VMaEo1YzJIakZOQ1BpMnIzLS1QWlJYUDVXbXdzWi1oNXVhUlg0ZmEya0V4dE5RRzhmOWJVWEhZSXVNekV6RU92aFBGdjhLbEg4VWVWemRhVzVBX2d5cnNTM3NzMTZ1VEpLbV9pbE55V3V0TWxjTVk5ODd0T3BYNXhLVkg5OEtJRWU1X2Q0UVNsZk5rcDhsSnJIRUtZMmo5RkFaaUZvdFZlRTJuVmhpT3N5b2hEQS5lN1poa1BXSnNZRjdiV0xrLjNSZjY1X2ZVNWJMeUZxbGZCT0g0SVhZRlRnUVFfbGtFR2NwQUduWThzV0l1MXJnVlNkZUtnZlQ4SmpsOXFBd2R2RldTY1dlMDFkN190Y3R0QUxJTHVIU2R4czJ6TjhheTRVOUxnaVVPOTctS3FUQlZtaHdhVEdBVHdFa1JTeGt4Q29OMEozVUMzMDFWVlVFcjh0WWkza1N5NjlYUFFuUXlJMFRNaG9uaGJNcmo3VWo0TFd1UUZsOXZudWtnQXdURGdxekU0ek9DV2RpR3FVbDUydlBSeHl0aVJrRlNFVFlHUmdHVUMweTcyRm5nWjA5N01IV0hCdGllbHJtMFlwektfTzJSRkR2dFJKQXM5a052a1N1SXlQcncwOHBzQTNsNzVUT3k4UVVNdm4wVjZXSVQteExDX21TbTVLTHQ2VlhxM2RseUFaMmhCXzltSEFBdEdTTURkcUtLS3NOOVVfYW1BZ2lmcDhaQjZFNzJhUjRZaFFGdS14RHRIaUQyVGo1dmxMbGJIMjEyZDJyQ3o2cGVCUW1HVU5WbmxwX3ZiYVJSNExWZ2VlUnNPeWJzSUhfazB3WnhtaVNOa0pwNTd3S252ZjRVX0VhZ1BNdFdxVkpSb0FFSlJRbk5FdERBcEViSXF1QjlaTDBtNHIwMGl6TXVhQjg2dmowUzRxUkt3RUw3eTZHbTFVMzBMNEZXVjAxek9pOW5vRktwS2xvMG1GaFNEdTBBdlRUZXJUNC1yNEVUQnA5bVFiOXE5QWdDbkdRZkZIOEFsOTN1bWFiV081R1l1a3hLbU1HaFB2YUV0ZUp3V0NZaUkzXzMzOEZwaFhTb01IMlJIVVRheGdPSXluTDJuaktjczMycHJSOVNWRXFnM1M3LTUyZjBiUS1DNFJ0elllVlJuNFBQTW83YmlTVmtPWnhNVUVqOGZQd3ZneXFRZ2doZUMtZjlPeG1RZ2k0MEYybldIbXZfTE5PRndCdmVKNDlDdTA1RUg0UUtUd0RVQ3ZSdi5NSWJMcklLVl9zM2JBYkstaFhXYlhn.5sI12ZCaZLSfpReHIfaE_TN8ylRXn-CZbEWICFdFWQMdpaCp6vuiMDMhCaZzL-OxHniWB0KbODl1S6LD2YiEzr1nlydsJWVlhtAn6ynI5Rd5Bds8Rl0GWtiReW8AuTlRn4m_HWSl-kaKIsnH2HpCVj_XhbWafJ9YsZ_r4nrMcFnXTRvpDG3AAKAx7uKnPymOaM6n43WhUXCO4xVXw47QNljjHhxRPwj--NE6bEyCtdEzUgzVWG_sz0zO0JpGynRFxS_aTs6Ku3pNz-W7sx90egHgTP2TWDXN3OWYHyP_0BkGT49temdUvH2Lma983ZRYV_SgnrDd7SY9vXgE_j2ItA"
+schemes:
+- "https"
+host: "$(catalog.host)"
+basePath: "/api/v1/crm/dista/lead"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+securityDefinitions:
+  X-IBM-Client-Secret:
+    type: "apiKey"
+    description: ""
+    in: "header"
+    name: "X-IBM-Client-Secret"
+  X-IBM-Client-Id:
+    type: "apiKey"
+    in: "header"
+    name: "X-IBM-Client-Id"
+security:
+- X-IBM-Client-Id: []
+  X-IBM-Client-Secret: []
+paths:
+  /fetch-lead-details:
+    post:
+      responses:
+        200:
+          description: "200 OK"
+          schema:
+            $ref: "#/definitions/FetchlLeadDetailsResponse"
+      parameters:
+      - name: "Request"
+        required: true
+        in: "body"
+        schema:
+          $ref: "#/definitions/FetchlLeadDetailsRequest"
+      - name: x-fapi-channel-id
+        type: string
+        required: true
+        in: header
+        description: >-
+          This header will be used to identify the consuming channel of the
+          API.  Each consumer can have a different channel code.
+      - name: x-fapi-epoch-millis
+        type: string
+        required: true
+        in: header
+        description: >-
+          The Epoch millis at the time of hitting the API request. Axis bank
+          will verify the header to ensure that the request isn’t too old.
+      - name: x-fapi-uuid
+        type: string
+        required: true
+        in: header
+        description: >-
+          Unique alphanumeric Id (without special characters) should be
+          generated by consumer. It should be unique for each request
+      - name: x-fapi-serviceId
+        type: string
+        required: true
+        in: header
+        default: OpenAPI
+        description: This header will be used to identify the service id of the API
+      - name: x-fapi-serviceVersion
+        type: string
+        required: true
+        in: header
+        default: '1.0'
+        description: This header will be used to identify the service version of the API.
+      - name: Content-Type
+        type: string
+        required: true
+        in: header
+        default: text/plain
+        description: >-
+          This header will be used to identify  the Content Type of the API
+          request body.
+      - name: X-IBM-Client-Id
+        type: string
+        required: true
+        in: header
+        description: >-
+          The consumer has to pass the unique client id in each and every
+          request header to be able to successfully consume the API. These
+          will be used for authentication and authorization
+      - name: X-IBM-Client-Secret
+        type: string
+        required: true
+        in: header
+        description: >-
+          The consumer has to pass the unique client secret in each and every
+          request header to be able to successfully consume the API. These
+          will be used for authentication and authorization
+definitions:
+  RequestData:
+    properties:
+      leadId:
+        type: "string"
+        description: "Lead Id"
+        example: "300172410"
+      token:
+        type: "string"
+        description: "Token"
+        example: "v8mjs5nj*****6l2s676f"
+    additionalProperties: false
+    required:
+    - "leadId"
+    - "token"
+  ResponseData:
+    description: ""
+    type: "object"
+    properties:
+      isSuccess:
+        type: "string"
+        description: "Success Response"
+        example: "true"
+      territoryName:
+        type: "string"
+        description: "Territory Name"
+        example: "Central Office"
+      assignToCode:
+        type: "string"
+        description: "Assign To Code"
+        example: ""
+      AssignToName:
+        type: "string"
+        description: "Assign To Name"
+        example: ""
+      customerName:
+        type: "string"
+        description: "Customer Name"
+        example: "INDRAJIT JAGDISHPRASAD SHARMA"
+      leadOwnerName:
+        type: "string"
+        description: "Lead Owner Name"
+        example: "ALWebUser"
+      leadRating:
+        type: "string"
+        description: "Lead Rating"
+        example: "Hot"
+      leadSourceName:
+        type: "string"
+        description: "Lead Source Name"
+        example: "Mobile Banking"
+      ownerCode:
+        type: "string"
+        description: "Owner Code"
+        example: "alwebuser"
+      productCategoryName:
+        type: "string"
+        description: "Product Category Name"
+        example: "Aditya Birla Health Insurance"
+      productName:
+        type: "string"
+        description: "Product Name"
+        example: "Group Activ Health Plan"
+      statusCodeName:
+        type: "string"
+        description: "Status Code Name"
+        example: "In Process"
+      leadId:
+        type: "string"
+        description: "Lead Id"
+        example: 300087417
+      leadName:
+        type: "string"
+        description: "Lead Name"
+        example: "RNADJTI JIISGSDARHAPSDH AMARA"
+      customerType:
+        type: "string"
+        description: "Customer Type"
+        example: "2"
+      customerId:
+        type: "string"
+        description: "Customer Id"
+        example: "063024790"
+      createdBySource:
+        type: "string"
+        description: "Created By Source"
+        example: "30"
+      mobilePhone:
+        type: "string"
+        description: "Mobile Phone"
+        example: "919898466486"
+    required:
+    - "isSuccess"
+  FetchlLeadDetailsRequest:
+    properties:
+      Data:
+        $ref: "#/definitions/RequestData"
+        description: "Data"
+      Risks:
+        type: "object"
+        description: "Risk"
+      Links:
+        type: "object"
+        description: "Links"
+      Meta:
+        type: "object"
+        description: "Meta"
+    additionalProperties: false
+    required:
+    - "Data"
+  FetchlLeadDetailsResponse:
+    properties:
+      Data:
+        $ref: "#/definitions/ResponseData"
+        description: "Data"
+      Risk:
+        type: "object"
+        description: "Risk"
+      Links:
+        type: "object"
+        description: "Links"
+      Meta:
+        type: "object"
+        description: "Meta"
+    additionalProperties: false
+    required:
+    - "Data"
+tags: []

@@ -1,0 +1,548 @@
+swagger: '2.0'
+info:
+  x-ibm-name: crm-aggregator-create-lead
+  title: CRM Aggregator Createlead
+  version: 1.0.0
+  description: |-
+    This API is used to create lead with provided details at CRM Next system.
+
+    <br><b>URL:</b> https://sakshamuat.axisbank.co.in/gateway/api/v2/CRMNext/create-lead
+
+    <br><b>Encryption :</b>
+    Encryption Mechanism : JWE
+    Key Encryption Algorithm : RSA-OAEP-256
+    Content Encryption Method : A256GCM
+    Signing Algorithm : RS256
+    
+    <b>Request</b>
+    <pre>
+    {
+        "Data": {
+            "token": "qjg8clqv8mjs5njd6l2s676fk5h22mu7uswaz7zq8mzahy83h372kk7q6sfuynds9xmyqjz5m7vfmhjnmurenzlmfpvp5e9qfuglvdueyq97e84nu7vcf8zgaj6dzk5bt6thngeb7gyae7m73fuldet4bttm9z6d5w8dsss5qctm2wcfv7kfkmubcvlekxxaax2jxlmpemcnjkcl78etpszfl4ufpxlf7u486fgf3v7erav23e59gxlabkacswnt8rz8nd6rx9ya96s8dkk93p33sxfhey4hrpsqaffyxljf2dqbqh3ybxn56279kyyx5t4x2j63rx2qfsw2mfbnjxbkqbrvxcuahd5mgzcda38g5qutjbmsa34347jdsgs9masuuek78s79xmt9yh6a9m5nkezfwj7satuj22d4hp4n2hykugeewd8dpzwky6tl5nbkl99m3rsn486jz3v5g3rtlyyr36bpk8v3hdzlb5mk69hyk7l5duhkbgxcqy4nsh88cryezwmg33ca85hl5zqse2clgbfdb3rv59fnu54fr7elmh6534ngcgz8m3q8ldpexkyz6ntr4kg73rywqbjkp48vq3e6xyw7rva",
+            "customerType": 2,
+            "customerId": "4011994",
+            "comments": "Comments",
+            "alternateMobile": "9999999999",
+            "otherSource": "Call",
+            "address1": "address1",
+            "address2": "address2",
+            "address3": "address3",
+            "pinCode": "400072",
+            "city": "city",
+            "state": "state",
+            "dateOfBirth": "18/05/2021",
+            "panNumber": "asdfd8874w",
+            "email": "abc@gmail.co m",
+            "salutationId": 1,
+            "first Name": "Test1FirstNa me",
+            "middleName": "Test2",
+            "lastName": "ETB LastName 5",
+            "layout": "1002 - Lead",
+            "createdBySource": "42 - Siddhi",
+            "leadSource": -5,
+            "subSource": "Branch",
+            "leadOwnerId": -1,
+            "mobilePhone": "999999997",
+            "phone": "999999998",
+            "product": -2041,
+            "subProduct": -2046,
+            "leadPriority": 100001,
+            "statusCode": 145,
+            "branch": 2994,
+            "followUpDate1": "22/05/2021",
+            "followUpReason": "Customer undecided",
+            "preferredDateAndTime": "22/05/2020 02:15:00",
+            "initialRejectedReason": 2,
+            "deferredDate": "22/06/2021 11:45:00",
+            "deferredReason": "Loan proposal postponed",
+            "userWorkedOnLead": "string",
+            "leadConvertor": 389,
+            "countryOfStudy": "INDIA",
+            "instituteName": "Test_Institute _Name",
+            "courseType": "PG",
+            "qualifyingTest": "GMAT",
+            "testScore": 5678,
+            "loanAmountInLakhs": "57",
+            "industry": 2,
+            "designation": 2,
+            "contactPerson": 9876,
+            "estimatedAnnualRevenue": 879876678,
+            "leadValue": 1,
+            "customerLocalityCheck": 2,
+            "customerOwns4Wheeler": 1,
+            "customerOwns2Wheeler": 2,
+            "customerMonthlyIncome": 1,
+            "customerWorkingLevel": 2,
+            "customerDesignation": 2,
+            "customerSegment": 1,
+            "monthAnnualIncome": 63000,
+            "jobExperience": 4,
+            "age": 27,
+            "retirementAge": 57,
+            "loanTenureInYears": 12,
+            "isCarVariantFinal": 2
+        },
+        "Risks": {}
+    }    
+    </pre>
+    <b>Encrypted Request</b>:
+    eyJhbGciOiJSUzI1NiJ9.ZXlKbGJtTWlPaUpCT*******lqb2lVbE5CTFU.5QlJWQXRNalUySW4wLmw3Rm1IbTZHQWNT
+
+    <b>Encrypted Response</b>:
+    eyJhbGciOiJSUzI1NiJ9.ZXlKbGJtTWlPaUpCT*******lqb2lVbE5CTFU.5QlJWQXRNalUySW4wLmw3Rm1IbTZHQWNT
+
+    <b>Response</b>:
+    <pre>
+    {
+        "Data": {
+            "isSuccess": "true",
+            "message": "Item has been created successfully",
+            "itemKey": "300154003",
+            "leadId": "300154003"
+        },
+        "Risk": {},
+        "Links": {},
+        "Meta": {}
+    }
+    </pre>
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /api/v2/CRMNext
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  X-IBM-Client-Secret:
+    type: apiKey
+    description: ''
+    in: header
+    name: X-IBM-Client-Secret
+  X-IBM-Client-Id:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+security:
+  - X-IBM-Client-Id: []
+    X-IBM-Client-Secret: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+  properties:
+   
+paths:
+  /create-lead:
+    post:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/createLeadResponse'
+      parameters:
+        - name: Request
+          required: true
+          in: body
+          description: Request
+          schema:
+            $ref: '#/definitions/createLeadRequest'
+        - name: "x-fapi-channel-id"
+          type: "string"
+          required: true
+          in: "header"
+          description: "This header will be used to identify the consuming channel of the API.  Each consumer can have a different channel code."
+        - name: "x-fapi-epoch-millis"
+          type: "string"
+          required: true
+          in: "header"
+          description: "The Epoch millis at the time of hitting the API request. Axis bank will verify the header to ensure that the request isn’t too old."
+        - name: "x-fapi-uuid"
+          type: "string"
+          required: true
+          in: "header"
+          description: "Unique alphanumeric Id (without special characters) should be generated by consumer. It should be unique for each request"
+        - name: "x-fapi-serviceId"
+          type: "string"
+          required: true
+          in: "header"
+          description: "Service Request ID configured for the Source System"
+        - name: "x-fapi-serviceVersion"
+          type: "string"
+          required: true
+          in: "header"
+          description: "Service Request Version configured for the Source System"
+        - name: "Content-Type"
+          type: "string"
+          required: true
+          in: "header"
+          description: "text/plain"
+        
+definitions:
+  RequestData:
+    properties:
+      token:
+        type: string
+        description: token
+        example: 'qjg8clqv8mjs5njd6l2s676fk5h22mu7uswaz7zq8mzahy83h372kk7q6sfuynds9xmyqjz5m7vfmhjnmurenzlmfpvp5e9qfuglvdueyq97e84nu7vcf8zgaj6dzk5bt6thngeb7gyae7m73fuldet4bttm9z6d5w8dsss5qctm2wcfv7kfkmubcvlekxxaax2jxlmpemcnjkcl78etpszfl4ufpxlf7u486fgf3v7erav23e59gxlabkacswnt8rz8nd6rx9ya96s8dkk93p33sxfhey4hrpsqaffyxljf2dqbqh3ybxn56279kyyx5t4x2j63rx2qfsw2mfbnjxbkqbrvxcuahd5mgzcda38g5qutjbmsa34347jdsgs9masuuek78s79xmt9yh6a9m5nkezfwj7satuj22d4hp4n2hykugeewd8dpzwky6tl5nbkl99m3rsn486jz3v5g3rtlyyr36bpk8v3hdzlb5mk69hyk7l5duhkbgxcqy4nsh88cryezwmg33ca85hl5zqse2clgbfdb3rv59fnu54fr7elmh6534ngcgz8m3q8ldpexkyz6ntr4kg73rywqbjkp48vq3e6xyw7rva'
+      customerType:
+        type: integer
+        description: customer Type
+        example: 2
+        format: int32
+      customerId:
+        type: string
+        description: customer Id
+        example: 004011994
+      comments:
+        type: string
+        description: Comments
+        example: Comments
+      alternateMobile:
+        type: string
+        description: alternate Mobile
+        example: '9999999999'
+      otherSource:
+        type: string
+        description: other Source
+        example: Call
+      address1:
+        type: string
+        description: address1
+        example: address1
+      address2:
+        type: string
+        description: address2
+        example: address2
+      address3:
+        type: string
+        description: address3
+        example: address3
+      pinCode:
+        type: string
+        description: pin Code
+        example: '400072'
+      city:
+        type: string
+        description: city
+        example: city
+      state:
+        type: string
+        description: state
+        example: state
+      dateOfBirth:
+        type: string
+        description: date Of Birth
+        example: 18/05/2021
+      panNumber:
+        type: string
+        description: pan Number
+        example: asdfd8874w
+      email:
+        type: string
+        example: abc@gmail.co m
+        description: email
+      salutationId:
+        type: integer
+        description: salutation Id
+        example: '1'
+        format: int32
+      first Name:
+        type: string
+        description: first Name
+        example: Test1FirstNa me
+      middleName:
+        type: string
+        description: middle Name
+        example: Test2
+      lastName:
+        type: string
+        description: last Name
+        example: ETB LastName 5
+      layout:
+        type: integer
+        description: lay out
+        example: 1002 - Lead
+        format: int32
+      createdBySource:
+        type: integer
+        description: created By Source
+        example: 42 - Siddhi
+        format: int32
+      leadSource:
+        type: integer
+        description: lead Source
+        example: -5
+        format: int32
+      subSource:
+        type: string
+        description: sub Source
+        example: Branch
+      leadOwnerId:
+        type: integer
+        description: lead Owner Id
+        example: -1
+        format: int32
+      mobilePhone:
+        type: string
+        description: mobile Phone
+        example: '999999997'
+      phone:
+        type: string
+        description: phone
+        example: '999999998'
+      product:
+        type: integer
+        description: product
+        example: -2041
+        format: int32
+      subProduct:
+        type: integer
+        description: sub Product
+        format: int32
+        example: -2046
+      leadPriority:
+        type: integer
+        description: lead Priority
+        format: int32
+        example: 100001
+      statusCode:
+        type: integer
+        description: status Code
+        format: int32
+        example: 145
+      branch:
+        type: integer
+        example: 2994
+        format: int32
+        description: branch
+      followUpDate1:
+        type: string
+        description: follow Up Date 1
+        example: 22/05/2021
+      followUpReason:
+        type: string
+        description: follow Up Reason
+        example: Customer undecided
+      preferredDateAndTime:
+        type: string
+        description: preferred Date And Time
+        example: '22/05/2020 02:15:00'
+      initialRejectedReason:
+        type: integer
+        description: initial Rejected Reason
+        example: 2
+        format: int32
+      deferredDate:
+        type: string
+        description: deferred Date
+        example: '22/06/2021 11:45:00'
+      deferredReason:
+        type: string
+        description: deferred Reason
+        example: Loan proposal postponed
+      userWorkedOnLead:
+        type: string
+        description: user Worked On Lead
+      leadConvertor:
+        type: integer
+        description: lead Convertor
+        format: int32
+        example: 389
+      countryOfStudy:
+        type: string
+        description: country Of Study
+        example: INDIA
+      instituteName:
+        type: string
+        description: institute Name
+        example: Test_Institute _Name
+      courseType:
+        type: string
+        description: course Type
+        example: PG
+      qualifyingTest:
+        type: string
+        description: qualifying Test
+        example: GMAT
+      testScore:
+        type: integer
+        description: test Score
+        format: int32
+        example: 5678
+      loanAmountInLakhs:
+        type: string
+        description: loan Amount In Lakhs
+        example: '57'
+      industry:
+        type: integer
+        description: industry
+        format: int32
+        example: 2
+      designation:
+        type: integer
+        description: designation
+        format: int32
+        example: 2
+      contactPerson:
+        type: integer
+        description: contact Person
+        format: int32
+        example: 9876
+      estimatedAnnualRevenue:
+        type: integer
+        description: estimated Annual Revenue
+        format: int32
+        example: 879876678
+      leadValue:
+        type: integer
+        description: lead Value
+        format: int32
+        example: 1
+      customerLocalityCheck:
+        type: integer
+        description: customer Locality Check
+        format: int32
+        example: 2
+      customerOwns4Wheeler:
+        type: integer
+        description: customer Owns 4 Wheeler
+        format: int32
+        example: 1
+      customerOwns2Wheeler:
+        type: integer
+        description: customer Owns 2 Wheeler
+        format: int32
+        example: 2
+      customerMonthlyIncome:
+        type: integer
+        description: customer Monthly Income
+        format: int32
+        example: 1
+      customerWorkingLevel:
+        type: integer
+        description: customer Working Level
+        format: int32
+        example: 2
+      customerDesignation:
+        type: integer
+        description: customer Designation
+        format: int32
+        example: 2
+      customerSegment:
+        type: integer
+        description: customer Segment
+        format: int32
+        example: 1
+      monthAnnualIncome:
+        type: integer
+        description: month Annual Income
+        format: int32
+        example: 63000
+      jobExperience:
+        type: integer
+        description: job Experience
+        format: int32
+        example: 4
+      age:
+        type: integer
+        format: int32
+        example: 27
+        description: age
+      retirementAge:
+        type: integer
+        description: retirement Age
+        format: int32
+        example: 57
+      loanTenureInYears:
+        type: integer
+        description: loanTenureInYears
+        format: int32
+        example: 12
+      isCarVariantFinal:
+        type: integer
+        description: is Car Variant Final
+        format: int32
+        example: 2
+    additionalProperties: false
+    required:
+      - token
+      - customerType
+      - alternateMobile
+      - address1
+      - address2
+      - address3
+      - pinCode
+      - city
+      - state
+      - dateOfBirth
+      - panNumber
+      - email
+      - salutationId
+      - first Name
+      - middleName
+      - lastName
+      - layout
+      - createdBySource
+      - leadSource
+      - mobilePhone
+      - leadOwnerId
+      - subSource
+      - product
+      - followUpDate1
+      - branch
+      - statusCode
+      - leadPriority
+      - subProduct
+      - initialRejectedReason
+      - deferredDate
+  ResponseData:
+    properties:
+      isSuccess:
+        type: string
+        example: 'true'
+        description: Status
+      message:
+        type: string
+        description: message
+        example: Item has been created successfully
+      itemKey:
+        type: string
+        description: item Key
+        example: '300154003'
+      leadId:
+        type: string
+        example: '300154003'
+        description: lead Id
+    additionalProperties: false
+    required:
+      - isSuccess
+      - message
+      - itemKey
+      - leadId
+  createLeadRequest:
+    properties:
+      Data:
+        $ref: '#/definitions/RequestData'
+      Risks:
+        type: object
+    additionalProperties: false
+    required:
+      - Data
+  createLeadResponse:
+    properties:
+      Data:
+        $ref: '#/definitions/ResponseData'
+      Risk:
+        type: object
+      Links:
+        type: object
+      Meta:
+        type: object
+    additionalProperties: false
+    required:
+      - Data
+      - Meta
+tags: []
